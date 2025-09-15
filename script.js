@@ -45,8 +45,8 @@ function renderProducts() {
 // Popup system
 function openPopup(type) {
   let content = '';
-  const whatsapp = 'https://wa.me/2349012345678';
-  const telegram = 'https://t.me/yourusername';
+  const whatsapp = 'https://wa.me/2349137569462';
+  const telegram = 'https://t.me/StorexSakura';
 
   switch (type) {
     case 'cart':
@@ -57,16 +57,16 @@ function openPopup(type) {
       break;
     case 'about':
       content = `
-        <h2 style="color:#ff85c1;">About Sakura Catalog</h2>
-        <p>Welcome to the ultimate Free Fire anime fusion. We don’t just sell skins—we deliver style, story, and sakura magic.</p>
-        <p>Curated by Musa, powered by passion, and designed for warriors who want to stand out.</p>
+        <h2 style="color:#ff85c1;">About Sakura Store</h2>
+        <p>Welcome to the ultimate Free Fire Store. We don’t just sell skins—we deliver style, story, and sakura magic.</p>
+        <p>Curated by NECROS, powered by passion, and designed.</p>
         <p>Need help? Hit us up below:</p>
       `;
       break;
     case 'contact':
       content = `
         <h2 style="color:#ff85c1;">Contact Us</h2>
-        <p>We’re here for you—whether it’s a skin request or a collab idea.</p>
+        <p>Contact Us Via.</p>
         <p>Reach out via:</p>
       `;
       break;
@@ -127,3 +127,4 @@ animate();
 
 // Initialize catalog
 loadProducts();
+
