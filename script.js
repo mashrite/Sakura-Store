@@ -1,11 +1,13 @@
-// Load products from localStorage or fallback to default
 let products = [];
 
-function loadProducts() {
-  const saved = localStorage.getItem('products');
-  if (saved) {
-    products = JSON.parse(saved);
-  } else {
+// Load products from server
+async function loadProducts() {
+  try {
+    const res = await fetch('/products');
+    products = await res.json();
+    renderProducts();
+  } catch (err) {
+    console.error('Failed to load products:', err);
     products = [
       {
         name: "Sakura Warrior Skin",
@@ -20,8 +22,8 @@ function loadProducts() {
         image: "https://files.catbox.moe/4qxh43.jpg"
       }
     ];
+    renderProducts();
   }
-  renderProducts();
 }
 
 // Render products to catalog
@@ -40,6 +42,17 @@ function renderProducts() {
     `;
     catalog.appendChild(card);
   });
+}
+
+// Add product (used in admin panel)
+async function addProduct(name, description, price, image) {
+  const newProduct = { name, description, price, image };
+  await fetch('/products', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newProduct)
+  });
+  loadProducts();
 }
 
 // Popup system
@@ -127,4 +140,3 @@ animate();
 
 // Initialize catalog
 loadProducts();
-
